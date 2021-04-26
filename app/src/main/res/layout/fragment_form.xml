@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.example.marketing.forms.FormViewModel" />
+
+    </data>
+
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -7,13 +17,10 @@
         android:paddingHorizontal="15dp"
         android:paddingBottom="60dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentBottom="true"
-            android:text="form" />
-
+       <androidx.recyclerview.widget.RecyclerView
+           android:id="@+id/form_rv"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:orientation="vertical"/>
     </RelativeLayout>
 </layout>

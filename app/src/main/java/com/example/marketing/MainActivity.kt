@@ -7,6 +7,9 @@ import androidx.lifecycle.LiveData
 import androidx.navigation.NavController
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.example.marketing.database.AppDao
+import com.example.marketing.database.AppDatabase
+import com.example.marketing.database.Repository
 import com.example.marketing.databinding.ActivityMainBinding
 import com.example.marketing.nav.setupWithNavController
 
@@ -39,9 +42,6 @@ class MainActivity : AppCompatActivity() {
                 containerId = R.id.main_host_fragment,
                 intent = intent
         )
-//        controller.observe(this, { navController ->
-//            setupActionBarWithNavController(navController)
-//        })
         currentNavController = controller
     }
 
