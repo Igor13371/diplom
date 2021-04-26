@@ -13,10 +13,6 @@ class AuthFragmentVM(private val formRepository: Repository) :
 
     val users = formRepository.users
 
-    fun insert(users: Users): Job = viewModelScope.launch {
-        formRepository.insertUser(users)
-    }
-
     override fun addOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) {
 
     }

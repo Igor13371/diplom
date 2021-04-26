@@ -36,7 +36,6 @@
                 android:cursorVisible="true"
                 android:hint="Введіть пароль"
                 android:imeOptions="actionNone"
-                android:inputType="phone"
                 android:singleLine="true"
                 android:textCursorDrawable="@null"
                 tools:text="+380507727257" />

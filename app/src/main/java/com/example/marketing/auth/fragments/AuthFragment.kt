@@ -41,13 +41,13 @@ class AuthFragment : Fragment() {
             users.forEach {
                 if (it.phone == binding.phoneEditText.text.toString()) {
                     findNavController().navigate(
-                        AuthFragmentDirections.signIn()
+                        AuthFragmentDirections.signIn(binding.phoneEditText.text.toString())
                     )
                 }
                 else
                 {
                     findNavController().navigate(
-                        AuthFragmentDirections.signUp()
+                        AuthFragmentDirections.signUp(binding.phoneEditText.text.toString())
                     )
                 }
             }
