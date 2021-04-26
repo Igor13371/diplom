@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.marketing.auth.fragments.SignInFragmentVM" />
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="200dp"
+        android:paddingHorizontal="15dp"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:text="Зареєструватися в додатку"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:gravity="start"/>
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/password_edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textCursorDrawable="@null"
+                android:layout_marginTop="20dp"
+                android:cursorVisible="true"
+                android:inputType="phone"
+                android:hint="Придумайте пароль пароль"
+                android:singleLine="true"
+                tools:text= "+380507727257"
+                android:imeOptions="actionNone" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/password_edit_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:textCursorDrawable="@null"
+                android:cursorVisible="true"
+                android:inputType="phone"
+                android:hint="Підтвердіть пароль"
+                android:singleLine="true"
+                tools:text= "+380507727257"
+                android:imeOptions="actionNone" />
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="match_parent"
+                android:layout_marginTop="20dp"
+                android:layout_height="wrap_content"
+                android:text="Зареєструватися"
+                android:textAllCaps="true" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</layout>

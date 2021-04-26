@@ -22,12 +22,7 @@ import com.google.android.material.textfield.TextInputEditText
 class Formfragment : Fragment() {
     private lateinit var binding: FragmentFormBinding
     private lateinit var viewModel: FormViewModel
-
-    private val formAdapter = FormAdapter().also { formAdapter ->
-        formAdapter.setOnItemClickListener { _, offer ->
-            openDialogEdit(offer)
-        }
-    }
+    private lateinit var formAdapter: FormAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,12 +35,21 @@ class Formfragment : Fragment() {
         viewModel = ViewModelProvider(this, factory).get(FormViewModel::class.java)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
+        forAdmin()
+        return binding.root
+    }
+
+    private fun forAdmin(){
+        formAdapter = FormAdapter().also { formAdapter ->
+            formAdapter.setOnItemClickListener { _, offer ->
+                openDialogEdit(offer)
+            }
+        }
         setupRecyclerView()
         observeViewModel(viewModel)
         binding.addButton.setOnClickListener {
             openDialog()
         }
-        return binding.root
     }
 
     private fun observeViewModel(viewModel: FormViewModel) {
