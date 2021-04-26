@@ -38,8 +38,10 @@ class AuthFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         binding.confirmButton.setOnClickListener {
-            users.forEach {
-                if (it.phone == binding.phoneEditText.text.toString()) {
+            val filteredUsers = users.filter {
+                it.phone  == binding.phoneEditText.text.toString()
+            }
+                if (!filteredUsers.isNullOrEmpty()) {
                     findNavController().navigate(
                         AuthFragmentDirections.signIn(binding.phoneEditText.text.toString())
                     )
@@ -50,7 +52,6 @@ class AuthFragment : Fragment() {
                         AuthFragmentDirections.signUp(binding.phoneEditText.text.toString())
                     )
                 }
-            }
         }
     }
     private fun observeViewModel(viewModel: AuthFragmentVM) {

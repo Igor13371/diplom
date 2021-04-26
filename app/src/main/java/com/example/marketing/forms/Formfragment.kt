@@ -1,6 +1,8 @@
 package com.example.marketing.forms
 
 import android.app.AlertDialog
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -24,6 +26,8 @@ class Formfragment : Fragment() {
     private lateinit var viewModel: FormViewModel
     private lateinit var formAdapter: FormAdapter
 
+    private lateinit var preferences: SharedPreferences
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -35,11 +39,13 @@ class Formfragment : Fragment() {
         viewModel = ViewModelProvider(this, factory).get(FormViewModel::class.java)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
-        forAdmin()
+        preferences = activity?.getSharedPreferences("sharedPrefs",Context.MODE_PRIVATE)!!
+        if (preferences.getString("ROLE", "") == "admin") forAdmin()
+        else forUser()
         return binding.root
     }
 
-    private fun forAdmin(){
+    private fun forAdmin() {
         formAdapter = FormAdapter().also { formAdapter ->
             formAdapter.setOnItemClickListener { _, offer ->
                 openDialogEdit(offer)
@@ -50,6 +56,17 @@ class Formfragment : Fragment() {
         binding.addButton.setOnClickListener {
             openDialog()
         }
+    }
+
+    private fun forUser() {
+        formAdapter = FormAdapter().also { formAdapter ->
+            formAdapter.setOnItemClickListener { _, offer ->
+                Toast.makeText(requireContext(), offer.name, Toast.LENGTH_SHORT).show()
+            }
+        }
+        setupRecyclerView()
+        observeViewModel(viewModel)
+        binding.addButton.visibility = View.GONE
     }
 
     private fun observeViewModel(viewModel: FormViewModel) {
@@ -95,6 +112,7 @@ class Formfragment : Fragment() {
             alertDialog.dismiss()
         }
     }
+
     private fun openDialogEdit(offer: Offer) {
         val dialogView = LayoutInflater.from(context).inflate(R.layout.dialog_add_service, null)
         val builder = AlertDialog.Builder(context)
@@ -102,7 +120,8 @@ class Formfragment : Fragment() {
             .setTitle("Редагування послуги")
         val alertDialog = builder.show()
         dialogView.findViewById<TextInputEditText>(R.id.name_enter).setText(offer.name)
-        dialogView.findViewById<TextInputEditText>(R.id.description_enter).setText(offer.description)
+        dialogView.findViewById<TextInputEditText>(R.id.description_enter)
+            .setText(offer.description)
         dialogView.findViewById<MaterialButton>(R.id.dismiss_button).setOnClickListener {
             alertDialog.dismiss()
         }
@@ -117,9 +136,9 @@ class Formfragment : Fragment() {
                 val description =
                     dialogView.findViewById<TextInputEditText>(R.id.description_enter).text.toString()
                 viewModel.updateOffer(
-                        newName = name,
-                        newDescription = description,
-                        searchId = offer.id
+                    newName = name,
+                    newDescription = description,
+                    searchId = offer.id
                 )
             } else {
                 Toast.makeText(context, "Будь ласка, введіть данні", Toast.LENGTH_SHORT).show()
