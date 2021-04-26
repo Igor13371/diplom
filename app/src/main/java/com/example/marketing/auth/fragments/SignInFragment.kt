@@ -11,7 +11,6 @@ import com.example.marketing.ViewModelFactory
 import com.example.marketing.database.AppDao
 import com.example.marketing.database.AppDatabase
 import com.example.marketing.database.Repository
-import com.example.marketing.databinding.FragmentAutintificationBinding
 import com.example.marketing.databinding.FragmentSignInBinding
 
 class SignInFragment : Fragment() {
