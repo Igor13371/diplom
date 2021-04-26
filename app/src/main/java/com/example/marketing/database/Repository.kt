@@ -9,4 +9,7 @@ class Repository(private val dao: AppDao) {
     suspend fun nukeTable(){
         dao.nukeTable()
     }
+    suspend fun updateOffer(newName: String, newDescription: String, searchId: Int){
+        dao.updateOffer(newName,newDescription,searchId)
+    }
 }

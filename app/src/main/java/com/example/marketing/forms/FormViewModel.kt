@@ -19,6 +19,9 @@ class FormViewModel(private val formRepository: Repository) :
     fun nukeTable():Job = viewModelScope.launch {
         formRepository.nukeTable()
     }
+    fun updateOffer(newName: String, newDescription: String, searchId: Int):Job = viewModelScope.launch {
+        formRepository.updateOffer(newName,newDescription,searchId)
+    }
 
     override fun addOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) {
 
