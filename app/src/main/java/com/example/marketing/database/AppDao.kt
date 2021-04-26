@@ -14,6 +14,9 @@ interface AppDao {
     @Query("SELECT * from users")
     fun getAllUsers(): LiveData<List<Users>>
 
+    @Query("SELECT * from choosenservice")
+    fun getAllServices(): LiveData<List<Users>>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(offer: Offer)
 

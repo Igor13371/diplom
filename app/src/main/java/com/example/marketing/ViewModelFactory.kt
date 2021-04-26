@@ -2,6 +2,7 @@ package com.example.marketing
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.example.marketing.admins.AdminFragmentVM
 import com.example.marketing.auth.fragments.AuthFragmentVM
 import com.example.marketing.auth.fragments.SignInFragmentVM
 import com.example.marketing.auth.fragments.SignUpFragmentVM
@@ -21,6 +22,9 @@ class ViewModelFactory(private val repository: Repository): ViewModelProvider.Fa
         }
         if(modelClass.isAssignableFrom(SignUpFragmentVM::class.java)){
             return SignUpFragmentVM(repository)as T
+        }
+        if(modelClass.isAssignableFrom(AdminFragmentVM::class.java)){
+            return AdminFragmentVM(repository)as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }
