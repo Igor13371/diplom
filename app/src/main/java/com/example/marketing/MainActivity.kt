@@ -39,9 +39,9 @@ class MainActivity : AppCompatActivity() {
                 containerId = R.id.main_host_fragment,
                 intent = intent
         )
-        controller.observe(this, { navController ->
-            setupActionBarWithNavController(navController)
-        })
+//        controller.observe(this, { navController ->
+//            setupActionBarWithNavController(navController)
+//        })
         currentNavController = controller
     }
 

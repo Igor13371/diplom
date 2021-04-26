@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/nav_forms"
-        android:icon="@drawable/ic_form"
+        android:icon="@drawable/ic_list"
         android:title="@string/choose_service"
         android:enabled="true"
         app:showAsAction="always"/>
